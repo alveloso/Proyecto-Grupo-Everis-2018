@@ -30,4 +30,7 @@ public class ConstantesSQL {
 	public static final String REGISTRAR_PREGUNTA_ADMIN = "insert into preguntas (descripcion, tipo) values (?,?)";
 	public static final String REGISTRAR_RESPUESTA_ADMIN = "insert into respuestaspreguntas (descripcion, idpregunta) values (?,?)";
 	
+	public static final String EDITAR_PREGUNTA = "update preguntas set descripcion = ? where idpregunta=?";
+	public static final String EDITAR_RESPUESTA = "update respuestaspreguntas set descripcion = ? where idpregunta=?";
+	public static final String OBTENER_RESPUESTA_POR_ID = "select * from respuestaspreguntas where idpregunta = ?";
 }
