@@ -70,5 +70,56 @@ public class PreguntasDAOImpl extends GenericDAO implements PreguntasDAO {
 		desconectar();
 		return tipopregunta;
 	}
+	
+	@Override
+	public void editarPregunta(String descripcionPregunta, int idPregunta) {
+		conectar();
+		
+		try {
+			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.EDITAR_PREGUNTA);
+			
+			ps.setString(1, descripcionPregunta);
+			ps.setInt(2, idPregunta);
+			
+			ps.execute();
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println("Error SQL editar pregunta");
+			System.out.println(e.getMessage());
+		}
+		
+		desconectar();
+	}
+
+	@Override
+	public Preguntas obtenerPreguntaPorId(int idPregunta) {
+		conectar();
+		
+		Preguntas pregunta = new Preguntas();
+		
+		try {
+			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.OBTENER_PREGUNTA_POR_ID);
+			
+			ps.setInt(1, idPregunta);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				pregunta.setIdpregunta(rs.getInt("idPregunta"));
+				pregunta.setDescripcion(rs.getString("descripcion"));
+				pregunta.setTipo(rs.getInt("tipo"));
+				
+			}
+			
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println("Error en la SQL de editar anuncio");
+			System.out.println(e.getMessage());
+		}
+
+		desconectar();
+		return pregunta;
+	}
 
 }
