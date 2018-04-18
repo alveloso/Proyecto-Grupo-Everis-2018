@@ -13,5 +13,9 @@ public interface PreguntasDAO {
 	int registrarPregunta(Preguntas nuevaPregunta);
 	
 	int buscarPreguntaPorId(int idpregunta);
+	
+	//Para editar pregunta por administrador
+	void editarPregunta(String descripcionPregunta, int idPregunta);
+	Preguntas obtenerPreguntaPorId(int idPregunta);
 
 }
