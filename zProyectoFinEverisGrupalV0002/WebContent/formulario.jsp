@@ -21,15 +21,15 @@
 				//Recojo las preguntas y respuestas del servlet
 				List<?>listaPreguntas=(List<?>)request.getAttribute("preguntas");
 				List<?>listaRespuestas=(List<?>)request.getAttribute("respuestas");
-				
+				int k = 0;
 				
 				//Bucle para ir publicando las preguntas
 				for(int i=0;i<listaPreguntas.size();i++) {
 					//Contador para ir recorriendo las respuestas porque en
 					//las preguntas de texto, la respuesta no esta registrada en bbdd
 					//Entonces no se puede recorrer a la vez las dos listas con for
-					//Ya que llegará un momento que intentarás leer una pregunta X
-					//Pero no habrá respuesta X. Al no haber respuestas de preguntas de texto
+					//Ya que llegarÃ¡ un momento que intentarÃ¡s leer una pregunta X
+					//Pero no habrÃ¡ respuesta X. Al no haber respuestas de preguntas de texto
 					//numero de preguntas > numero de respuestas
 					
 					out.println("<div class='campoFormulario'>");
@@ -38,7 +38,7 @@
 					Preguntas pregunta = (Preguntas)listaPreguntas.get(i);
 					//Muestro pregunta
 					out.println(pregunta.getDescripcion() + "<br/>");
-					int k = 0;
+					
 					
 					//Si el tipo de pregunta es texto (1)
 					if(pregunta.getTipo() == 1){
