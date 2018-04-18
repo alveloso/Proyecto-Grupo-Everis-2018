@@ -14,6 +14,7 @@ public interface RespuestaspreguntasDAO {
 	
 	void registrarRespuesta(Respuestaspreguntas respuestaNueva, int idPreguntaAsociada);
 	
-
-	
+	//Para editar respuestas por administrador
+	Respuestaspreguntas obtenerRespuestaPorId(int idPreguntaAsociada);
+	void editarRespuesta(String descripcionRespuesta, int idPreguntaAsociada);
 }
