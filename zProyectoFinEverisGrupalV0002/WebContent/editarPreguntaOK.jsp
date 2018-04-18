@@ -9,6 +9,6 @@
 <body>
 	<h1>LA PREGUNTA SE HA EDITADO CORRECTAMENTE</h1>
 	<h3>Redirigiendo al menu principal...</h3>
-	<meta http-equiv="refresh" content="10: url=endometriosis.jsp">
+	<meta http-equiv="refresh" content="10; url=endometriosis.jsp">
 </body>
 </html>
