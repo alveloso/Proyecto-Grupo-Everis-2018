@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.Preguntas;
+import modelos.Preguntas;
 import daos.ConstantesSQL;
 import daos.GenericDAO;
 import daos.PreguntasDAO;
