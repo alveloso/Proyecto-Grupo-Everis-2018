@@ -10,7 +10,8 @@ public interface RespuestaspreguntasDAO {
 	
 	List <Respuestaspreguntas> obtenerRespuestaspreguntas();
 
-
+	void borrarRespuesta(int idpregunta);
+	
 	void registrarRespuesta(Respuestaspreguntas respuestaNueva, int idPreguntaAsociada);
 	
 
