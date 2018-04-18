@@ -3,14 +3,13 @@ package daosImpl;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.Preguntas;
 import daos.ConstantesSQL;
 import daos.GenericDAO;
 import daos.PreguntasDAO;
-import modelos.Preguntas;
 
 public class PreguntasDAOImpl extends GenericDAO implements PreguntasDAO {
 
@@ -31,7 +30,7 @@ public class PreguntasDAOImpl extends GenericDAO implements PreguntasDAO {
 
 			}
 		} catch (SQLException e) {
-			System.out.println("Error en la SQL");
+			System.out.println("Error en la SQL de listar preguntas");
 			e.printStackTrace();
 		}
 		desconectar();
@@ -52,35 +51,24 @@ public class PreguntasDAOImpl extends GenericDAO implements PreguntasDAO {
 		}
 		desconectar();
 	}
-	
+
 	@Override
-	public int registrarPregunta(Preguntas nuevaPregunta) {
+	public int buscarPreguntaPorId(int idpregunta) {
 		conectar();
-		
-		int idGenerado = -1;
-		
+		int tipopregunta = -1;
 		try {
-			PreparedStatement ps = con.prepareStatement(ConstantesSQL.REGISTRAR_PREGUNTA_ADMIN, Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, nuevaPregunta.getDescripcion());
-			ps.setInt(2, nuevaPregunta.getTipo());
-			
-			ps.execute();
-			
-			ResultSet rs = ps.getGeneratedKeys();
-			
-			if(rs.next()){
-				idGenerado = rs.getInt(1);
+			PreparedStatement ps = con
+					.prepareStatement(ConstantesSQL.OBTENER_PREGUNTA_POR_ID);
+			ResultSet resultado = ps.executeQuery();
+			while (resultado.next()) {
+				tipopregunta = resultado.getInt("tipo");
 			}
-			
-			ps.close();
-			
 		} catch (SQLException e) {
-			System.out.println("Error SQL registrar pregunta administrador");
+			System.out.println("Error en la SQL de obtener pregunta por id");
 			System.out.println(e.getMessage());
 		}
 		desconectar();
-		
-		return idGenerado;
+		return tipopregunta;
 	}
 
 }
