@@ -36,11 +36,11 @@
 	
 	        </form>
 	
-	         <p>¿No eres miembro? <a href="ServletCargaDeElementosRegistro" class="blue">Registrate ahora</a><span class="fontawesome-arrow-right"></span></p>
+	         <p>Â¿No eres miembro? <a href="ServletCargaDeElementosRegistro" class="blue">Registrate ahora</a><span class="fontawesome-arrow-right"></span></p>
 	
 	      </div> <!-- end login -->
 	
 	    </div>
-		
+		<div><img src="img/login.png" width='1200' alt=''></div>
 	</body>
 </html>
