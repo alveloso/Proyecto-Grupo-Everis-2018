@@ -4,18 +4,16 @@
 <%@page import="java.util.List" %>
 <%@page import="modelos.Preguntas" %>
 <%@page import="modelos.Respuestaspreguntas" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Rellene el formulario</title>
 		<link rel="stylesheet" href="css/formulario.css">
 	</head>
-	
 	<body>
-
-		<div class='explicacion'>Por favor, conteste a las preguntas que se muestran a continuación y envíe el formulario.</div>
 	
+		
 		<form action="ServletRecogidaDatos" method="post">
 			<%
 			if(request.getAttribute("preguntas") instanceof List){
@@ -24,47 +22,62 @@
 				List<?>listaPreguntas=(List<?>)request.getAttribute("preguntas");
 				List<?>listaRespuestas=(List<?>)request.getAttribute("respuestas");
 				
+				
 				//Bucle para ir publicando las preguntas
 				for(int i=0;i<listaPreguntas.size();i++) {
+					//Contador para ir recorriendo las respuestas porque en
+					//las preguntas de texto, la respuesta no esta registrada en bbdd
+					//Entonces no se puede recorrer a la vez las dos listas con for
+					//Ya que llegará un momento que intentarás leer una pregunta X
+					//Pero no habrá respuesta X. Al no haber respuestas de preguntas de texto
+					//numero de preguntas > numero de respuestas
+					
 					out.println("<div class='campoFormulario'>");
+							
 					//Voy sacando pregunta y su respectiva respuesta
 					Preguntas pregunta = (Preguntas)listaPreguntas.get(i);
-					Respuestaspreguntas respuesta = (Respuestaspreguntas)listaRespuestas.get(i);
+					//Muestro pregunta
+					out.println(pregunta.getDescripcion() + "<br/>");
+					int k = 0;
 					
-				    out.println(pregunta.getDescripcion() + "<br/>");
-				    
-				    //Si la pregunta es de texto...
-				    if(pregunta.getTipo()== 1){
-				    	
-				    	out.println("<input class='texto' type='text' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "'><br/>");
+					//Si el tipo de pregunta es texto (1)
+					if(pregunta.getTipo() == 1){
+						//Saco el input text de texto
+						out.println("<input type='text' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "'><br/>");
 				    	out.println("</div>");
-				    	
-				    }else if(pregunta.getTipo() == 2){//Si la pregunta es de tipo radio...
-				    	
-				    	//Guardo en un array las posibles respuestas
+					}else if(pregunta.getTipo() == 2){//Si es pregunta de tipo 2
+						//Siendo pregunta 2 se que hay respuesta. La saco
+						Respuestaspreguntas respuesta = (Respuestaspreguntas)listaRespuestas.get(k);
+						
+						//Guardo en un array las posibles respuestas
 				    	String[] respuestasRadio = respuesta.getDescripcion().split("-");
 				    	
 				    	//Imprimo cada respuesta
 				    	for(int j=0;j<respuestasRadio.length;j++){
-				    		out.println("<input class='radio' type='radio' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "' value='" + respuestasRadio[j] + "'> " + respuestasRadio[j] + "&nbsp;&nbsp;&nbsp;");
+				    		out.println("<input type='radio' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "' value='" + respuestasRadio[j] + "'> " + respuestasRadio[j] + "&nbsp;&nbsp;&nbsp;");
 				    	}
 				    	out.println("</div>");
-				    	
-				    }else if(pregunta.getTipo() == 3){//Si la pregunta es de tipo check lo mismo que las de tipo radio
-				    	
-				    	String[] respuestasCheck = respuesta.getDescripcion().split("-");
-				    
+				    	//Al haber sacado respuesta incremento contador de respuestas
+				    	k++;
+					}else if(pregunta.getTipo() == 3){//Si es pregunta de tipo 3
+						
+						//Siendo pregunta 3 se que hay respuesta. La saco
+						Respuestaspreguntas respuesta = (Respuestaspreguntas)listaRespuestas.get(k);
+						
+						String[] respuestasCheck = respuesta.getDescripcion().split("-");
 				    	for(int j=0;j<respuestasCheck.length;j++){
-				    		out.println("<input class='check' type='checkbox' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "_" + (j+1) + "' value='" + respuestasCheck[j] + "'> " + respuestasCheck[j] + "&nbsp;&nbsp;&nbsp;");
+				    		out.println("<input type='checkbox' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "_" + (j) + "' value='" + respuestasCheck[j] + "'> " + respuestasCheck[j] + "&nbsp;&nbsp;&nbsp;");
 				    	}
 				    	out.println("</div>");
-				    }
+				    	//Al haber sacado respuesta incremento contador de respuestas
+				    	k++;
+					}
+					
 				}
 			}
 			%>
-			
-			<input class='submit' type="submit" value="Enviar formulario">
-	
+			<input type="submit" value="Enviar formulario">
+		
 		</form>
 	</body>
 </html>
