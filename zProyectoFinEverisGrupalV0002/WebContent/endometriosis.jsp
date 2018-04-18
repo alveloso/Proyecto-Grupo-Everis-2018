@@ -13,6 +13,7 @@
 		Bienvenido: ${sessionScope.idUser} <br/>
 		<a href="ServletsListadoPreguntas">Preguntas</a>&nbsp;
 		<a href="ServletListadoRespuestaspreguntas">Respuestas preguntas</a>&nbsp;
+		<a href="ServletLogOut">salir</a>&nbsp;
 		
 		<!--Para ir al formulario -->
 		<a href="ServletCreaFormulario">IR AL FORMULARIO</a>
@@ -22,6 +23,7 @@
 		Bienvenido ADMINISTRADOR: ${sessionScope.idUser} <br/>
 		<!-- Registrar editar borrar nuevas preguntas redirecciones -->
 		<a href="ServletCargaDeDatosPreviaParaBusquedaPregunta">Borrar Preguntas</a>&nbsp;
+		<a href="ServletLogOut">salir</a>&nbsp;
 	</c:if>
 	
 		<!-- Queda pendiente mostrar por aquí mensaje de formulario realizado-->
