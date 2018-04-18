@@ -59,7 +59,7 @@ public  class RespuestaspreguntasDAOImpl extends GenericDAO implements Respuesta
 		conectar();
 		
 		try {
-			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.REGISTRAR_RESPUESTA_ADMIN);
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.REGISTRAR_RESPUESTA_ADMIN);
 			ps.setString(1, respuestaNueva.getDescripcion());
 			ps.setInt(2, idRespuestaAsociada);
 			
@@ -81,7 +81,7 @@ public  class RespuestaspreguntasDAOImpl extends GenericDAO implements Respuesta
 		Respuestaspreguntas respuesta = new Respuestaspreguntas();
 		
 		try {
-			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.OBTENER_RESPUESTA_POR_ID);
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.OBTENER_RESPUESTA_POR_ID);
 			
 			//Recojo la respuesta
 			ps.setInt(1, idPreguntaAsociada);
@@ -107,7 +107,7 @@ public  class RespuestaspreguntasDAOImpl extends GenericDAO implements Respuesta
 		conectar();
 		
 		try {
-			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.EDITAR_RESPUESTA);
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.EDITAR_RESPUESTA);
 			
 			ps.setString(1, descripcionRespuesta);
 			ps.setInt(2, idPreguntaAsociada);
