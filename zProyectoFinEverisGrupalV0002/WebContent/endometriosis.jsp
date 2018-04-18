@@ -23,6 +23,8 @@
 		Bienvenido ADMINISTRADOR: ${sessionScope.idUser} <br/>
 		<!-- Registrar editar borrar nuevas preguntas redirecciones -->
 		<a href="ServletCargaDeDatosPreviaParaBorrarPregunta">Borrar Preguntas</a>&nbsp;
+		<a href="registrarPreguntaRespuesta.jsp">REGISTRAR PREGUNTA/RESPUESTA</a><br/>
+		<a href="ServletCargaDeDatosPreviaParaEditarPregunta">EDITAR PREGUNTA/RESPUESTA</a><br/>
 		<a href="ServletLogOut">salir</a>&nbsp;
 	</c:if>
 	
