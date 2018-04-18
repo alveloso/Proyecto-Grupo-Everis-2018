@@ -25,6 +25,8 @@ public class ConstantesSQL {
 	public static final String CONTAR_RESPUESTAS_IGUALES = "Select Count(respuesta) from radiorespuestas where idpregunta = ? and respuesta like(?)";
 	//FIN SQLS [ISMAEL]
 	public static final String BORRAR_PREGUNTA = "delete from preguntas where idpregunta = ? ";
+	public static final String BORRAR_RESPUESTA = "delete from respuestaspreguntas where idpregunta = ? ";
+	public static final String OBTENER_PREGUNTA_POR_ID = "select * from preguntas where idpregunta = ? ";
 	public static final String REGISTRAR_PREGUNTA_ADMIN = "insert into preguntas (descripcion, tipo) values (?,?)";
 	public static final String REGISTRAR_RESPUESTA_ADMIN = "insert into respuestaspreguntas (descripcion, idpregunta) values (?,?)";
 	
