@@ -72,6 +72,36 @@ public class PreguntasDAOImpl extends GenericDAO implements PreguntasDAO {
 	}
 	
 	@Override
+	public int registrarPregunta(Preguntas nuevaPregunta) {
+		conectar();
+		
+		int idGenerado = -1;
+		
+		try {
+			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.REGISTRAR_PREGUNTA_ADMIN, Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, nuevaPregunta.getDescripcion());
+			ps.setInt(2, nuevaPregunta.getTipo());
+			
+			ps.execute();
+			
+			ResultSet rs = ps.getGeneratedKeys();
+			
+			if(rs.next()){
+				idGenerado = rs.getInt(1);
+			}
+			
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println("Error SQL registrar pregunta administrador");
+			System.out.println(e.getMessage());
+		}
+		desconectar();
+		
+		return idGenerado;
+	}
+	
+	@Override
 	public void editarPregunta(String descripcionPregunta, int idPregunta) {
 		conectar();
 		
