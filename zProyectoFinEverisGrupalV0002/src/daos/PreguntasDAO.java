@@ -11,5 +11,7 @@ public interface PreguntasDAO {
 	void borrarPregunta(int idpregunta);
 	
 	int registrarPregunta(Preguntas nuevaPregunta);
+	
+	int buscarPreguntaPorId(int idpregunta);
 
 }
