@@ -22,7 +22,7 @@
 	<c:if test="${sessionScope.idUserAdmin != null}">
 		Bienvenido ADMINISTRADOR: ${sessionScope.idUser} <br/>
 		<!-- Registrar editar borrar nuevas preguntas redirecciones -->
-		<a href="ServletCargaDeDatosPreviaParaBusquedaPregunta">Borrar Preguntas</a>&nbsp;
+		<a href="ServletCargaDeDatosPreviaParaBorrarPregunta">Borrar Preguntas</a>&nbsp;
 		<a href="ServletLogOut">salir</a>&nbsp;
 	</c:if>
 	
