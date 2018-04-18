@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%; 
+    height:100%; 
+}
+
+body { 
+    width: 100%;
+	height:100%;
+	/* Color del fondo de la pantalla */
+	background: #dbdbd2;
+}
+
+span {
+	color: purple;
+	margin-top: 2em;
+	margin-left: 1em;
+}

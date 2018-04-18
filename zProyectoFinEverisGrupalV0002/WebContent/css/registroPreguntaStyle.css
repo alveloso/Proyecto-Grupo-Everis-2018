@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%; 
+    height:100%; 
+}
+
+body { 
+    width: 100%;
+	height:100%;
+	/* Color del fondo de la pantalla */
+	background: #dbdbd2;
+}
+
+h1 {
+	font-size: 18px;
+	text-decoration: underline;
+	margin-top: 1em;
+	margin-left: 1em;
+	margin-bottom: 1em;
+}
+
+.formularioRegistroPregunta {
+	margin-top: 1em;
+	margin-left: 1em;
+}
+
+.formularioRegistroPregunta form label {
+  	height: 35px;
+  	margin-right: 1em;
+}
+
+.formularioRegistroPregunta form input[type="text"] {
+	height: 35px;
+	background-color: #3b4148;
+  	border-radius: 4px;
+  	color: #E6D0CB;
+  	margin-top: 10px;
+  	padding: 10px;
+  	width: 230px;
+  	border-style: solid;
+  	border-color: white;
+  	border-width: 2px;
+}
+
+.formularioRegistroPregunta form input[type="radio"] {
+  	margin-right: 5px;
+}
+
+.formularioRegistroPregunta form input[type="submit"] {
+  	border-radius: 6px;
+  	-moz-border-radius: 4px;
+  	-webkit-border-radius: 4px;
+  	background-color: #ea4c88;
+  	color: #eee;
+  	font-weight: bold;
+  	text-transform: uppercase;
+  	margin-left: 25%;
+  	margin-top: 2em;
+  	margin-bottom: 1em;
+  	padding: 1em;
+}
+
+.formularioRegistroPregunta form input[type="submit"]:hover {
+  	background-color: #d44179;
+}
