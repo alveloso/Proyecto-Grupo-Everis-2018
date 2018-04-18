@@ -1,4 +1,4 @@
-package servlets;
+package servletsAdmin;
 
 import java.io.IOException;
 
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.Preguntas;
-import modelo.Respuestaspreguntas;
+import modelos.Preguntas;
+import modelos.Respuestaspreguntas;
 import daos.PreguntasDAO;
 import daosImpl.PreguntasDAOImpl;
 import daosImpl.RespuestaspreguntasDAOImpl;
@@ -45,7 +45,7 @@ public class ServletEditarPreguntas extends HttpServlet {
 	
 		//Dejo la pregunta a editar en una variable
 		request.setAttribute("preguntaAeditar", preguntaAeditar);
-		//Voy al jsp donde saldr· la informaciÛn
+		//Voy al jsp donde saldr√° la informaci√≥n
 		request.getRequestDispatcher("guardarCambiosPregunta.jsp").forward(request, response);
 	}
 
