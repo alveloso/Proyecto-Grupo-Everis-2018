@@ -6,10 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+import modelo.Respuestaspreguntas;
 import daos.ConstantesSQL;
 import daos.GenericDAO;
 import daos.RespuestaspreguntasDAO;
-import modelos.Respuestaspreguntas;
 
 public  class RespuestaspreguntasDAOImpl extends GenericDAO implements RespuestaspreguntasDAO {
 
@@ -35,28 +37,26 @@ public  class RespuestaspreguntasDAOImpl extends GenericDAO implements Respuesta
 		
 		return respuestaspreguntas;
 	}
-	
+
 	@Override
-	public void registrarRespuesta(Respuestaspreguntas respuestaNueva, int idPreguntaAsociada) {
+	public void borrarRespuesta(int idpregunta) {
 		conectar();
-		
-		try {
-			PreparedStatement ps = con.prepareStatement(ConstantesSQL.REGISTRAR_RESPUESTA_ADMIN);
-			ps.setString(1, respuestaNueva.getDescripcion());
-			ps.setInt(2, idPreguntaAsociada);
-			
+		try{
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.BORRAR_RESPUESTA);
+			ps.setInt(1, idpregunta);
 			ps.execute();
 			ps.close();
+			System.out.println("borrado con exito");
+		} catch(SQLException e){
+			System.out.println("SQL borrar pregunta esta mal");
 			
-		} catch (SQLException e) {
-			System.out.println("Error SQL registrar respuesta administrador");
-			System.out.println(e.getMessage());
 		}
 		desconectar();
 	}
 
-}
 
+
+	}
 
 
 
