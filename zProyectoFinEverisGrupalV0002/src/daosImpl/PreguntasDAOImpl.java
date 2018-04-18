@@ -1,6 +1,7 @@
 package daosImpl;
 
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class PreguntasDAOImpl extends GenericDAO implements PreguntasDAO {
 		int idGenerado = -1;
 		
 		try {
-			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.REGISTRAR_PREGUNTA_ADMIN, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.REGISTRAR_PREGUNTA_ADMIN, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, nuevaPregunta.getDescripcion());
 			ps.setInt(2, nuevaPregunta.getTipo());
 			
@@ -106,7 +107,7 @@ public class PreguntasDAOImpl extends GenericDAO implements PreguntasDAO {
 		conectar();
 		
 		try {
-			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.EDITAR_PREGUNTA);
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.EDITAR_PREGUNTA);
 			
 			ps.setString(1, descripcionPregunta);
 			ps.setInt(2, idPregunta);
@@ -129,7 +130,7 @@ public class PreguntasDAOImpl extends GenericDAO implements PreguntasDAO {
 		Preguntas pregunta = new Preguntas();
 		
 		try {
-			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.OBTENER_PREGUNTA_POR_ID);
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.OBTENER_PREGUNTA_POR_ID);
 			
 			ps.setInt(1, idPregunta);
 			ResultSet rs = ps.executeQuery();
