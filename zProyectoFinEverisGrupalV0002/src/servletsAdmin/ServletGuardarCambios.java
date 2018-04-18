@@ -1,4 +1,4 @@
-package servlets;
+package servletsAdmin;
 
 import java.io.IOException;
 
