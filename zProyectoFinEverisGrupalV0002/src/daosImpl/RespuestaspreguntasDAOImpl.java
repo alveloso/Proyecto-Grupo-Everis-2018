@@ -53,10 +53,78 @@ public  class RespuestaspreguntasDAOImpl extends GenericDAO implements Respuesta
 		}
 		desconectar();
 	}
-
-
-
+	
+	@Override
+	public void registrarRespuesta(Respuestaspreguntas respuestaNueva, int idRespuestaAsociada) {
+		conectar();
+		
+		try {
+			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.REGISTRAR_RESPUESTA_ADMIN);
+			ps.setString(1, respuestaNueva.getDescripcion());
+			ps.setInt(2, idRespuestaAsociada);
+			
+			ps.execute();
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println("Error SQL registrar respuesta administrador");
+			System.out.println(e.getMessage());
+		}
+		desconectar();
 	}
+
+	@Override
+	public Respuestaspreguntas obtenerRespuestaPorId(int idPreguntaAsociada) {
+		conectar();
+		
+		//Donde va a ir al respuesta correspondiente
+		Respuestaspreguntas respuesta = new Respuestaspreguntas();
+		
+		try {
+			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.OBTENER_RESPUESTA_POR_ID);
+			
+			//Recojo la respuesta
+			ps.setInt(1, idPreguntaAsociada);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				respuesta.setDescripcion(rs.getString("descripcion"));
+			}
+			
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println("Error en la SQL de buscar respuesta por id");
+			System.out.println(e.getMessage());
+		}
+
+		desconectar();
+		return respuesta;
+	}
+
+	@Override
+	public void editarRespuesta(String descripcionRespuesta,int idPreguntaAsociada) {
+		conectar();
+		
+		try {
+			PreparedStatement ps = miConexion.prepareStatement(ConstantesSQL.EDITAR_RESPUESTA);
+			
+			ps.setString(1, descripcionRespuesta);
+			ps.setInt(2, idPreguntaAsociada);
+			
+			ps.execute();
+			ps.close();
+			
+		} catch (SQLException e) {
+			System.out.println("Error SQL editar respuesta");
+			System.out.println(e.getMessage());
+		}
+		
+		desconectar();
+		
+	}
+
+}
 
 
 
