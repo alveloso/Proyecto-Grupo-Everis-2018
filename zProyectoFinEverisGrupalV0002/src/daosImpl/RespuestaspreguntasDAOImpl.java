@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-import modelo.Respuestaspreguntas;
+import modelos.Respuestaspreguntas;
 import daos.ConstantesSQL;
 import daos.GenericDAO;
 import daos.RespuestaspreguntasDAO;
