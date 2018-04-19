@@ -10,9 +10,7 @@
 	<body>
 	
 	<c:if test="${sessionScope.idUser != null}">
-		Bienvenido: ${sessionScope.idUser} <br/>
-		<a href="ServletsListadoPreguntas">Preguntas</a>&nbsp;
-		<a href="ServletListadoRespuestaspreguntas">Respuestas preguntas</a>&nbsp;
+		Bienvenido: ${sessionScope.idUser} <br/>		
 		<a href="ServletLogOut">salir</a>&nbsp;
 		
 		<!--Para ir al formulario -->
